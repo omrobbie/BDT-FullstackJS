@@ -1,3 +1,7 @@
+# omrobbie local files
+.gitignore
+_res
+
 # Logs
 logs
 *.log
