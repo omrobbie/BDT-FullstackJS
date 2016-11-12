@@ -32,6 +32,7 @@ ProductManagerBase = function() {
 	this.getAllProducts = function() {
 		console.log('\nProduct List:');
 		console.log(this.products);
+		return this.products;
 	};
 
 	this.getProduct = function(sku) {
@@ -140,12 +141,12 @@ myManager.addProduct(myBook1);
 myManager.addProduct(myBook2);
 myManager.addProduct(myFashion1);
 
-myManager.getAllProducts();
-myManager.getProduct('Book-001');
-myManager.removeProduct(myBook2);
-myManager.getProduct('Book-002');
-myManager.removeProductBySKU('Fashion-001');
-myManager.getProduct('Fashion-001');
+// myManager.getAllProducts();
+// myManager.getProduct('Book-001');
+// myManager.removeProduct(myBook2);
+// myManager.getProduct('Book-002');
+// myManager.removeProductBySKU('Fashion-001');
+// myManager.getProduct('Fashion-001');
 myManager.getAllProducts();
 
 // console.log('\nUpdate Product\n--------------');
@@ -185,3 +186,5 @@ myCart.getAllItems();
 myCart.removeItem(myOrder2);
 myCart.getAllItems();
 myCart.checkout();
+
+myManager.getAllProducts();
