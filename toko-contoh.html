@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Toko Online</title>
+	<link rel="stylesheet" type="text/css" href="toko.css">
+</head>
+<body>
+	<h1 id='title'>Toko Online</h1>
+	<p><i>Jual buku dan fashion</i></p>
+	<hr>
+	<p>ubah warna judul web </p><button id="changeBlue">Biru</button><button id="changeRed">Merah</button>
+	<br><br>
+	<div id="container">
+		<p>data product:</p>
+		<table id="products" border="1">
+			<tr>
+				<th>SKU</th>
+				<th>Name</th>
+				<th>Price</th>
+			</tr>
+		</table>
+	</div>
+
+	<!-- javascript -->
+	<script type="text/javascript">
+		window.onload = function() {
+			var title = document.getElementById('title');
+
+			var changeBlue = document.getElementById('changeBlue').addEventListener('click', function() {
+				title.style.color = 'blue';
+			});
+
+			var changeRed = document.getElementById('changeRed').addEventListener('click', function() {
+				title.style.color = 'red';
+			});
+
+			var products = [
+			{
+				sku 	: 1,
+				name 	: 'Product 1',
+				price 	: 1000
+			},
+			{
+				sku		: 2,
+				name	: 'Product 2',
+				price	: 2000
+			},
+			{
+				sku		: 3,
+				name	: 'Product 3',
+				price	: 3000
+			},
+			{
+				sku		: 4,
+				name	: 'Product 4',
+				price	: 4000
+			}];
+
+			var myProduct = document.getElementById("products");
+			var displayProduct = function() {
+				products.forEach(function(product) {
+					var row = myProduct.insertRow(-1);
+					var sku = row.insertCell(0);
+					var name = row.insertCell(1);
+					var price = row.insertCell(2);
+					sku.innerHTML = product.sku;
+					name.innerHTML = product.name;
+					price.innerHTML = product.price;
+				});
+			};
+
+			displayProduct();
+		};
+	</script>
+</body>
+</html>

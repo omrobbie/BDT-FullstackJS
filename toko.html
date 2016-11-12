@@ -6,67 +6,50 @@
 	<link rel="stylesheet" type="text/css" href="toko.css">
 </head>
 <body>
-	<h1 id='title'>Toko Online</h1>
-	<p><i>Jual buku dan fashion</i></p>
+	<h1>Toko Online</h1>
+	<p><i>Menjual buku-buku dan perlengkapan fashion</i></p>
 	<hr>
-	<p>ubah warna judul web </p><button id="changeBlue">Biru</button><button id="changeRed">Merah</button>
-	<br><br>
 	<div id="container">
-		<p>data product:</p>
+		<p>Daftar Product:</p>
 		<table id="products" border="1">
 			<tr>
+				<th>No</th>
 				<th>SKU</th>
 				<th>Name</th>
 				<th>Price</th>
+				<th>Action</th>
 			</tr>
 		</table>
 	</div>
 
 	<!-- javascript -->
+	<script type="text/javascript" src="toko.js"></script>
 	<script type="text/javascript">
+		function deleteRow(btn) {
+			console.log(btn.parentNode.parentNode);
+			var row = btn.parentNode.parentNode;
+			row.parentNode.removeChild(row);
+			// list.removeProduct(this);
+		}
+
 		window.onload = function() {
-			var title = document.getElementById('title');
+			var lists = myManager.getAllProducts();
 
-			var changeBlue = document.getElementById('changeBlue').addEventListener('click', function() {
-				title.style.color = 'blue';
-			});
-
-			var changeRed = document.getElementById('changeRed').addEventListener('click', function() {
-				title.style.color = 'red';
-			});
-
-			var products = [
-			{
-				sku 	: 1,
-				name 	: 'Product 1',
-				price 	: 1000
-			},
-			{
-				sku		: 2,
-				name	: 'Product 2',
-				price	: 2000
-			},
-			{
-				sku		: 3,
-				name	: 'Product 3',
-				price	: 3000
-			},
-			{
-				sku		: 4,
-				name	: 'Product 4',
-				price	: 4000
-			}];
-
+			var i = 1;
 			var myProduct = document.getElementById("products");
 			var displayProduct = function() {
-				products.forEach(function(product) {
+				lists.forEach(function(list) {
 					var row = myProduct.insertRow(-1);
-					var sku = row.insertCell(0);
-					var name = row.insertCell(1);
-					var price = row.insertCell(2);
-					sku.innerHTML = product.sku;
-					name.innerHTML = product.name;
-					price.innerHTML = product.price;
+					var no = row.insertCell(0);
+					var sku = row.insertCell(1);
+					var name = row.insertCell(2);
+					var price = row.insertCell(3);
+					var action = row.insertCell(4);
+					no.innerHTML = i++;
+					sku.innerHTML = list.sku;
+					name.innerHTML = list.name;
+					price.innerHTML = list.price;
+					action.innerHTML = '<button id="edit">edit</button><input type="button" value="delete" onclick="deleteRow(this)" />';
 				});
 			};
 
